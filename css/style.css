@@ -10,6 +10,7 @@ body {
 	display: flex;
 }
 .logo {
+	margin-top: 20px;
 	width: 100%;
 	position: absolute;
 	text-align: center;
