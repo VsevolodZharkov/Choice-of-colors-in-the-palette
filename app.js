@@ -48,17 +48,21 @@ function setRandomColor(isInitial) {
     const isLocked = col.querySelector("i").classList.contains("fa-lock");
     const text = col.querySelector("h2");
     const btn = col.querySelector("button");
-    
 
     if (isLocked) {
       colors.push(text.textContent);
       return;
     }
-		const color = isInitial ? colors[index] ? colors[index] : chroma.random() : chroma.random();
-		if(!isInitial) {
-			colors.push(color);
-		}
-    text.textContent = color;
+
+    const color = isInitial
+      ? colors[index]
+        ? colors[index]
+        : chroma.random()
+      : chroma.random();
+    if (!isInitial) {
+      colors.push(color);
+    }
+    text.textContent = 'Color' + ' ' + color;
     col.style.background = color;
 
     setTextColor(text, color);
