@@ -4,7 +4,9 @@ document.addEventListener("keydown", (event) => {
   event.preventDefault();
   if (event.code.toLowerCase() === "space") {
     setRandomColor();
-  }
+  } else if(event.code.toLowerCase() === "enter") {
+    setRandomColor();
+	}
 });
 
 document.addEventListener("click", (event) => {
