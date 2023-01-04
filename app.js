@@ -17,6 +17,12 @@ document.addEventListener("click", (event) => {
         : event.target.children[0];
     node.classList.toggle("fa-lock-open");
     node.classList.toggle("fa-lock");
+		if(node.classList.value === 'fa-solid fa-lock-open') {
+			alert('Column color saved.');
+		} else {
+			alert('The color of the column will change.')
+		}
+	
   } else if (type === "copy") {
     copyToClickboard(event.target.textContent);
     alert("Text copied");
