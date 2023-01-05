@@ -9,12 +9,13 @@ body {
 	height: 100vh;
 	display: flex;
 }
-.logo {
+.form-box {
 	margin-top: 20px;
 	width: 100%;
 	position: absolute;
 	text-align: center;
 }
+
 .col {
 	flex:1;
 	display: flex;

@@ -27,7 +27,28 @@
     <title>Coolours</title>
   </head>
   <body>
-		<h1 class="logo">Click on Enter or Space.</h1>
+    <div class="form-box">
+      <h1 class="logo">Click on Enter or Space.</h1>
+      <form class="form">
+        <label>
+          Write the color number to search.
+          <input class="form_input" type="color" />
+        </label>
+        <label for="column">Column</label>
+        <select id="column" name="column">
+          <option value="1">First column.</option>
+          <option value="2">Second column.</option>
+          <option value="3">Third column.</option>
+          <option value="4">Fourth column.</option>
+          <option value="5">Fifth column.</option>
+        </select>
+				<!-- <label>
+          Write the color number to search.
+          <input class="form_input-two" type="email" name="email" />
+        </label> -->
+        <button type="submit" class="form_btn">Submit</button>
+      </form>
+    </div>
     <div class="col">
       <h2 class="title" data-type="copy"></h2>
       <button class="btn" type="button" data-type="lock">
@@ -59,5 +80,6 @@
       </button>
     </div>
     <script src="app.js"></script>
+    <script src="form.js"></script>
   </body>
 </html>
