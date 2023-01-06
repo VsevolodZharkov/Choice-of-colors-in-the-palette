@@ -3,14 +3,15 @@ const form = document.querySelector(".form");
 const btn = form.querySelector(".form_btn");
 const input = form.querySelector(".form_input-two");
 const result = {};
-let type; 
+let type;
+let inputValue;
 document.addEventListener("keydown", (event) => {
   event.preventDefault();
   if (event.code.toLowerCase() === "space") {
     setRandomColor();
-  } else if(event.code.toLowerCase() === "enter") {
+  } else if (event.code.toLowerCase() === "enter") {
     setRandomColor();
-	}
+  }
 });
 
 document.addEventListener("click", (event) => {
@@ -23,22 +24,21 @@ document.addEventListener("click", (event) => {
         : event.target.children[0];
     node.classList.toggle("fa-lock-open");
     node.classList.toggle("fa-lock");
-		if(node.classList.value === 'fa-solid fa-lock-open') {
-			alert('The color of the column will change.');
-		} else {
-			alert('Column color saved.')
-		}
+    if (node.classList.value === "fa-solid fa-lock-open") {
+      alert("The color of the column will change.");
+    } else {
+      alert("Column color saved.");
+    }
   } else if (type === "copy") {
     copyToClickboard(event.target.textContent);
     alert("Text copied");
   }
 });
 
-
-document.addEventListener("submit", e => {
+document.addEventListener("submit", (e) => {
   e.preventDefault();
-	
-  if ( e.target.elements[0].value === "" || e.target.elements[1].value === '') {
+
+  if (e.target.elements[0].value === "" || e.target.elements[1].value === "") {
     alert("Введите данные для поиска");
     return;
   }
@@ -46,20 +46,20 @@ document.addEventListener("submit", e => {
   const column = e.target.elements[1].value;
   result.color = color;
   result.column = column;
-	// console.log(result);
-	columnСheck(result)
+  // console.log(result);
+  columnСheck(result);
   return result;
 });
 
-function columnСheck({color, column}) {
-	const col = document.getElementById(`${column}`);
-	const isLocked = col.querySelector("i").classList.contains("fa-lock");
+function columnСheck({ color, column }) {
+  const col = document.getElementById(`${column}`);
+  const isLocked = col.querySelector("i").classList.contains("fa-lock");
 
-	if (isLocked) {
-		alert('This column is disabled.')
-	} else if (!isLocked) {
-		col.style.background = color;
-	}
+  if (isLocked) {
+    alert("This column is disabled.");
+  } else if (!isLocked) {
+    col.style.background = color;
+  }
 }
 // function generateRandomColor() {
 // 	const hexCodes = '0123456789ABCDEF';
@@ -101,7 +101,7 @@ function setRandomColor(isInitial) {
     if (!isInitial) {
       colors.push(color);
     }
-    text.textContent = 'Color' + ' ' + color;
+    text.textContent = "Color" + " " + color;
     col.style.background = color;
 
     setTextColor(text, color);
@@ -125,5 +125,24 @@ function getColorsFromHash() {
   }
   return [];
 }
+
+input.addEventListener("keydown", (e) => {
+  
+  console.log(e.key.toLowerCase());
+  if (
+    e.key.toLowerCase() === "escape" ||
+    e.code.toLowerCase() === "space" ||
+		e.code.toLowerCase() === "enter"
+  ) {
+    return;
+  }
+	if ( e.key.toLowerCase() === "backspace" ) {
+		inputValue.slice(0, Number(inputValue.length - 2));
+		e.target.value = inputValue;
+		return;
+	}
+  inputValue += e.key;
+  e.target.value = inputValue;
+});
 
 setRandomColor(true);
