@@ -1,5 +1,9 @@
 const cols = document.querySelectorAll(".col");
-
+const form = document.querySelector(".form");
+const btn = form.querySelector(".form_btn");
+const input = form.querySelector(".form_input-two");
+const result = {};
+let type; 
 document.addEventListener("keydown", (event) => {
   event.preventDefault();
   if (event.code.toLowerCase() === "space") {
@@ -10,7 +14,7 @@ document.addEventListener("keydown", (event) => {
 });
 
 document.addEventListener("click", (event) => {
-  const type = event.target.dataset.type;
+  type = event.target.dataset.type;
 
   if (type === "lock") {
     const node =
@@ -29,6 +33,34 @@ document.addEventListener("click", (event) => {
     alert("Text copied");
   }
 });
+
+
+document.addEventListener("submit", e => {
+  e.preventDefault();
+	
+  if ( e.target.elements[0].value === "" || e.target.elements[1].value === '') {
+    alert("Введите данные для поиска");
+    return;
+  }
+  const color = e.target.elements[0].value;
+  const column = e.target.elements[1].value;
+  result.color = color;
+  result.column = column;
+	// console.log(result);
+	columnСheck(result)
+  return result;
+});
+
+function columnСheck({color, column}) {
+	const col = document.getElementById(`${column}`);
+	const isLocked = col.querySelector("i").classList.contains("fa-lock");
+
+	if (isLocked) {
+		alert('This column is disabled.')
+	} else if (!isLocked) {
+		col.style.background = color;
+	}
+}
 // function generateRandomColor() {
 // 	const hexCodes = '0123456789ABCDEF';
 // 	let color = '';
