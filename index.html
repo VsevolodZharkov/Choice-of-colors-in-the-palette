@@ -4,6 +4,13 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+      integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <link rel="stylesheet" href="./css/style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -42,12 +49,9 @@
           <option value="4">Fourth column.</option>
           <option value="5">Fifth column.</option>
         </select>
-        <label for="text">
-          Write the color number to search.
-          
-        </label>
-				<input id="text" class="form_input-two" type="text" name="textColor" />
-
+        <label> Write the color number to search. 
+					<input class="form_input-two" type="text" name="textColor"minlength="7" maxlength="7" />
+				</label>
         <button type="submit" class="form_btn">Submit</button>
       </form>
     </div>
