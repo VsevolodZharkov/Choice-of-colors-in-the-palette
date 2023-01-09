@@ -42,11 +42,14 @@ document.addEventListener("submit", (e) => {
     alert("Введите данные для поиска");
     return;
   }
-  const color = e.target.elements[0].value;
+	const color = e.target.elements[0].value;
   const column = e.target.elements[1].value;
+	const colorTwo = e.target.elements[2].value;
+	console.log(colorTwo);
   result.color = color;
   result.column = column;
-  // console.log(result);
+  result.colorTwo = colorTwo;
+
   columnСheck(result);
 
 	setTextColor(text, color);
@@ -55,7 +58,7 @@ document.addEventListener("submit", (e) => {
 });
 
 input.addEventListener("keydown", (e) => {
-	// console.log(e.key || e.code);
+
   if (
     e.key.toLowerCase() === "escape" ||
     e.code.toLowerCase() === "space" ||
@@ -80,7 +83,7 @@ input.addEventListener("keydown", (e) => {
 // if(e.target.value.length < 7 || e.target.value.length > 7) {
 // 	alert('Hex color legth 1')
 // }
-function columnСheck({ color, column }) {
+function columnСheck({ color, column, colorTwo }) {
   const col = document.getElementById(`${column}`);
   const isLocked = col.querySelector("i").classList.contains("fa-lock");
 
@@ -89,8 +92,14 @@ function columnСheck({ color, column }) {
   } else if (!isLocked) {
 		if(inputValue === ''){
 			col.style.background = color;
+			setTextColor(text, color);
+  		setTextColor(btn, color);
+			return;
 		} else if(inputValue !== '') {
 			col.style.background = inputValue;
+			setTextColor(text, color);
+  		setTextColor(btn, colorTwo);
+			return;
 		}
   }
 }
@@ -158,7 +167,5 @@ function getColorsFromHash() {
   }
   return [];
 }
-
-
 
 setRandomColor(true);
