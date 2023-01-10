@@ -45,15 +45,12 @@ document.addEventListener("submit", (e) => {
 	const color = e.target.elements[0].value;
   const column = e.target.elements[1].value;
 	const colorTwo = e.target.elements[2].value;
-	console.log(colorTwo);
+
   result.color = color;
   result.column = column;
   result.colorTwo = colorTwo;
 
   columnСheck(result);
-
-	setTextColor(text, color);
-  setTextColor(btn, color);
   return result;
 });
 
@@ -79,25 +76,23 @@ input.addEventListener("keydown", (e) => {
   e.target.value = inputValue.trim();
 });
 
-
-// if(e.target.value.length < 7 || e.target.value.length > 7) {
-// 	alert('Hex color legth 1')
-// }
 function columnСheck({ color, column, colorTwo }) {
   const col = document.getElementById(`${column}`);
+	const text = col.querySelector("h2");
+	const btn = col.querySelector("button");
   const isLocked = col.querySelector("i").classList.contains("fa-lock");
 
   if (isLocked) {
     alert("This column is disabled.");
   } else if (!isLocked) {
-		if(inputValue === ''){
+		if( inputValue === '' || inputValue.length !== 7 ){
 			col.style.background = color;
 			setTextColor(text, color);
   		setTextColor(btn, color);
 			return;
 		} else if(inputValue !== '') {
 			col.style.background = inputValue;
-			setTextColor(text, color);
+			setTextColor(text, colorTwo);
   		setTextColor(btn, colorTwo);
 			return;
 		}
