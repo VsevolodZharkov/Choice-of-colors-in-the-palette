@@ -88,11 +88,13 @@ function columnСheck({ color, column, colorTwo }) {
       col.style.background = color;
       setTextColor(text, color);
       setTextColor(btn, color);
+			text.textContent = color;
       return;
     } else if (inputValue !== "") {
       col.style.background = inputValue;
       setTextColor(text, colorTwo);
       setTextColor(btn, colorTwo);
+			text.textContent = colorTwo;
       return;
     }
   }
