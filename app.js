@@ -110,7 +110,13 @@ function columnСheck({ color, column, colorTwo }) {
 // }
 function setTextColor(text, color) {
   const luminance = chroma(color).luminance();
-  text.style.color = luminance > 0.5 ? "black" : "while";
+	console.log(luminance);
+	// if(luminance > 0.5) {
+	// 	text.style.color = 'black'
+	// } else {
+	// 	text.style.color = 'white'
+	// }
+  text.style.color = luminance > 0.5 ? "black" : "white";
 }
 
 function copyToClickboard(text) {
